@@ -1,24 +1,32 @@
 # ADRL
-A Deductive Reasoning Language
+Syntax for "A Deductive Reasoning Language"
 
-## Syntax
+## Syntax v0.1
+
+This specification uses the Augmented Backs-Naur Form (ABNF)
 
 ```text
-statement           = definition
-                    / premise
-                    / validity
+statement           = identity
+                    / modifier
+
+identity            = premise
                     / conclusion
+
+modifier            = argument
                     / soundness
+                    / validity
 
-definition          = keyword_definition section_separator identifier
+premise             = "premise" section_separator identifier section_separator label
 
-premise             = keyword_premise section_separator identifier
+conclusion          = "conclusion" section_separator identifier section_separator label
 
-validity            = keyword_premise identifier (keyword_sound / keyword_unsound)
+argument            = "argument" 2*(section_seperator identifier)
 
-conclusion          = keyword_conclusion section_separator identifier
+soundness           = "sound" section_separator identifier
+                    / "unsound" section_seperator identifier
 
-soundness           = keyword_conclusion identifier (keyword_valid / keyword_invalid)
+validity            = "valid" section_separator identifier
+                    / "invalid" section_separator identifier
 
 identifier          = local_identifier
                     / relative_identifier
@@ -28,7 +36,7 @@ local_identifier    = 2*char
 
 relative_identifier = 2*(char / path_separator)
 
-absolute_identifier =
+absolute_identifier = **TODO**
 
 char                = ALPHA 
                     / DIGIT
@@ -39,20 +47,4 @@ path_separator      = "/"
 word_separator      = "_"
 
 section_separator   = " "
-
-keyword_definition  = "DEFINITION"
-
-keyword_premise     = "PREMISE"
-
-keyword_conclusion  = "CONCLUSION"
-
-keyword_sound       = "SOUND"
-
-keyword_unsound     = "UNSOUND"
-
-keyword_valid       = "VALID"
-
-keyword_invalid     = "INVALID"
 ```
-
-This specification uses the Augmented Backs-Naur Form (ABNF)
