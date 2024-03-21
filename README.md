@@ -1,7 +1,7 @@
 # ADRL
 Syntax for "A Deductive Reasoning Language"
 
-## Syntax v0.1
+## Syntax
 
 This specification uses the Augmented Backs-Naur Form (ABNF)
 
@@ -16,35 +16,33 @@ modifier            = argument
                     / soundness
                     / validity
 
-premise             = "premise" section_separator identifier section_separator label
+premise             = "premise" SP identifier SP label
 
-conclusion          = "conclusion" section_separator identifier section_separator label
+conclusion          = "conclusion" SP identifier SP label
 
-argument            = "argument" 2*(section_seperator identifier)
+argument            = "argument" 2*(SP identifier)
 
-soundness           = "sound" section_separator identifier
-                    / "unsound" section_seperator identifier
+soundness           = "sound" SP identifier
+                    / "unsound" SP identifier
 
-validity            = "valid" section_separator identifier
-                    / "invalid" section_separator identifier
+validity            = "valid" SP identifier
+                    / "invalid" SP identifier
 
-identifier          = local_identifier
-                    / relative_identifier
-                    / absolute_identifier
+identifier          = local-identifier
+                    / relative-identifier
+                    / absolute-identifier
 
-local_identifier    = 2*char
+local-identifier    = 2*char
 
-relative_identifier = 2*(char / path_separator)
+relative-identifier = 2*(char / path-separator)
 
-absolute_identifier = **TODO**
+absolute-identifier = **TODO**
 
 char                = ALPHA 
                     / DIGIT
-                    / word_separator
+                    / word-separator
 
-path_separator      = "/"
+path-separator      = "/"
 
-word_separator      = "_"
-
-section_separator   = " "
+word-separator      = "_"
 ```
