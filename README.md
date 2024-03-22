@@ -5,7 +5,7 @@ Syntax for "A Deductive Reasoning Language"
 
 This specification uses the Augmented Backus-Naur Form (ABNF)
 
-```text
+```abnf
 statement           = identity
                     / modifier
 
