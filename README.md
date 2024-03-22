@@ -3,7 +3,7 @@ Syntax for "A Deductive Reasoning Language"
 
 ## Syntax
 
-This specification uses the Augmented Backs-Naur Form (ABNF)
+This specification uses the Augmented Backus-Naur Form (ABNF)
 
 ```text
 statement           = identity
