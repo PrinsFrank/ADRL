@@ -12,18 +12,15 @@ statement           = identity
 identity            = premise
                     / conclusion
 
-modifier            = argument
-                    / soundness
+modifier            = trueness
                     / validity
 
 premise             = "premise" SP identifier [SP label]
 
-conclusion          = "conclusion" SP identifier [SP label]
+conclusion          = "conclusion" 2*(SP identifier)  [SP label]
 
-argument            = "argument" 2*(SP identifier) [SP label]
-
-soundness           = "sound" SP identifier [SP label]
-                    / "unsound" SP identifier [SP label]
+trueness            = "true" SP identifier [SP label]
+                    / "false" SP identifier [SP label]
 
 validity            = "valid" SP identifier [SP label]
                     / "invalid" SP identifier [SP label]
