@@ -16,17 +16,17 @@ modifier            = argument
                     / soundness
                     / validity
 
-premise             = "premise" SP identifier SP label
+premise             = "premise" SP identifier [SP label]
 
-conclusion          = "conclusion" SP identifier SP label
+conclusion          = "conclusion" SP identifier [SP label]
 
-argument            = "argument" 2*(SP identifier)
+argument            = "argument" 2*(SP identifier) [SP label]
 
-soundness           = "sound" SP identifier
-                    / "unsound" SP identifier
+soundness           = "sound" SP identifier [SP label]
+                    / "unsound" SP identifier [SP label]
 
-validity            = "valid" SP identifier
-                    / "invalid" SP identifier
+validity            = "valid" SP identifier [SP label]
+                    / "invalid" SP identifier [SP label]
 
 identifier          = local-identifier
                     / relative-identifier
@@ -37,6 +37,8 @@ local-identifier    = 2*char
 relative-identifier = 2*(char / path-separator)
 
 absolute-identifier = **TODO**
+
+label               = DQUOTE *(char / SP) DQUOTE
 
 char                = ALPHA 
                     / DIGIT
