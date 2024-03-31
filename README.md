@@ -33,13 +33,17 @@ local-identifier    = 2*char
 
 relative-identifier = 2*(char / path-separator)
 
-absolute-identifier = **TODO**
+absolute-identifier = "https://" host [":" port] "/" relative-identifier
 
 label               = DQUOTE *(char / SP) DQUOTE
 
 char                = ALPHA 
                     / DIGIT
                     / word-separator
+
+host                = 1*alpha ["." host]
+
+port                = 1*DIGIT
 
 path-separator      = "/"
 
