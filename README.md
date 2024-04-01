@@ -18,9 +18,31 @@ Some reasoning sets may be fundamental for others. Therefor, it should be possib
 
 ### 2.1 Identifier
 
-### 2.1 Premise
+An identifier is a unique alphanumeric string that can be used to reference a specific identity. Currently, an identity is either a premise or a conclusion, but more identity types may be added later on. 
 
-### 2.1 Conclusion
+Identifiers have to be unique in a file, and valid parsers should throw an error when encountering multiple definitions for the same identifier within a file. It is allowed to have multiple modifiers for one identifier.
+
+When an identity is referenced through a relative or absolute identifier, the identifier will still be unique.
+
+### 2.2 Premise
+
+A premise is a declarative statement that can either be true or false. Consider the following argument:
+
+> Because all humans are mortal, and Socrates is a Human, Socrates is mortal.
+
+This argument contains two premises: "all humans are mortal", and "Socrates is a human".
+
+### 2.3 Conclusion
+
+A conclusion describes a statement that is logically true when all of its premises are true. In the above example, the argument contains the conclusion "Socrates is mortal" based on the two premises. 
+
+### 2.4 Trueness of Premises
+
+As Premises can be either true or false. This is considered "trueness" in this specification.
+
+### 2.5 Validity of Conclusions
+
+If a conclusion is not valid, it can be marked as such. To allow for distributed arguments, it's also possible to marke a conclusion as valid.
 
 ## ABNF Syntax
 
