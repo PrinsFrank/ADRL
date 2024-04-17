@@ -18,7 +18,7 @@ Some reasoning sets may be fundamental for others. Therefore, it should be possi
 
 ### 2.1 Identifier
 
-An identifier is a unique alphanumeric string that can be used to reference a specific identity. Currently, an identity is either a premise or a conclusion, but more identity types may be added later on. 
+An identifier is a unique alphanumeric string that can be used to reference a specific identity. Currently, an identity is either a [premise](#22-premise) or a [conclusion](#23-conclusion), but more identity types may be added later on. 
 
 Identifiers have to be unique in a file, and valid parsers should throw an error when encountering multiple definitions for the same identifier within a file. It is allowed to have multiple modifiers for one identifier.
 
@@ -34,15 +34,19 @@ This argument contains two premises: "all humans are mortal", and "Socrates is a
 
 ### 2.3 Conclusion
 
-A conclusion describes a statement that is logically true when all of its premises are true. In the above example, the argument contains the conclusion "Socrates is mortal" based on the two premises. 
+A conclusion is an identity that can be based on a set of premises and other conclusions. The conclusion itself does not describe how this conclusion can be made, that is done with arguments. In the example above, the statement "Socrates is mortal" is the conclusion.
 
-### 2.4 Trueness of Premises
+### 2.4 Argument
+
+An argument links a set of premises and/or conclusions to one conclusion. In the example above, the entire sentence is the argument, but it's made up of two premises and one conclusion. After assigning an identity to each, the three identities can be linked, which together form the argument.
+
+### 2.5 Trueness of Premises
 
 Premises can be either true or false. This is considered "trueness" in this specification.
 
-### 2.5 Validity of Conclusions
+### 2.6 Validity of Arguments
 
-If a conclusion is not valid, it can be marked as such. To allow for distributed arguments, it's also possible to mark a conclusion as valid.
+If an argument is not valid, it can be marked as such. To allow for distributed arguments, it's also possible to mark an argument as valid.
 
 ## ABNF Syntax
 
@@ -50,6 +54,7 @@ This specification uses the Augmented Backus-Naur Form (ABNF)
 
 ```abnf
 statement           = identity
+                    / argument
                     / modifier
 
 identity            = premise
@@ -60,7 +65,9 @@ modifier            = trueness
 
 premise             = "premise" SP identifier [SP label]
 
-conclusion          = "conclusion" 2*(SP identifier)  [SP label]
+conclusion          = "conclusion" SP identifier [SP label]
+
+argument            = "argument" 2*(SP identifier) [SP label]
 
 trueness            = "true" SP identifier [SP label]
                     / "false" SP identifier [SP label]
