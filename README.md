@@ -1,6 +1,7 @@
 # ADRL
 
-> :warning: This is a living document. Chapter numbers and content might change :warning:
+> [!WARNING]
+> This is a living document. Chapter numbers and content might change
 
 ## 1.0 What is ADRL?
 
